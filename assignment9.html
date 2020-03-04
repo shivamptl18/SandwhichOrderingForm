@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>Sandwich Shop</title>
+    <link rel="stylesheet" type="text/css" href="results.css">
+    <script type="text/javascript">
+    function submitOrder()
+    {   
+        var selSndWch = document.getElementById('selSandwichType').value;
+        var yesChips = document.getElementById('yesChips');
+        var noChips = document.getElementById('noChips');
+        var chkCheese = document.getElementById('chkCheese');
+        var chkAvocado = document.getElementById('chkAvocado');
+        
+        var txtSandwich = "";
+        var txtTopping = "";
+        var txtChips = "";
+        
+        var chkCheesePrice = 0.00;
+        var chkAvocodoPrice = 0.00;
+        
+        
+        if (chkCheese.checked) 
+        {
+            chkCheesePrice = 1.25;
+            txtTopping = "You wanted cheese. ";
+        }
+        if (chkAvocado.checked) 
+        {
+            chkAvocodoPrice = 1.50;
+            txtTopping += "You wanted avacodo. ";
+        }
+        var chipsPrice = "";
+        var sandwich = "";
+        var sandwichPrice = "";
+        
+        if (selSndWch == "blt") 
+        {
+            sandwich = "BLT";
+            sandwichPrice = 8.99;
+        } 
+        else if (selSndWch == "hbgr") 
+        {
+            sandwich = "Hamburger";
+            sandwichPrice = 7.99;
+        } 
+        else if (selSndWch == "gc") 
+        {
+            sandwich = "Grilled Cheese";
+            sandwichPrice = 4.99;
+        }
+        
+        if (yesChips.checked) 
+        {
+            chipsPrice = 1.50;
+            txtChips = "You wanted chips.";
+        } 
+        else if (noChips.checked) 
+        {
+            chipsPrice = 0.00;
+            txtChips = "You did not want chips. ";
+        }
+        
+        
+        txtSandwich = "You ordered a " + sandwich + ".";
+        var totalCost = sandwichPrice + chkCheesePrice + chkAvocodoPrice + chipsPrice;
+        var txtCost = "The cost is $" + totalCost;
+        document.getElementById("results").innerHTML = txtSandwich + txtTopping + txtChips + txtCost;
+    }
+    </script>
+</head>
+<body>
+	<h1>Sandwich Ordering Form</h1>
+    
+	<div id="ordering_form">
+    <p>
+    Select a sandwich:
+    <select id="selSandwichType">
+      <option value="blt">BLT ($8.99)</option>
+      <option value="hbgr">Hamburger ($7.99)</option>
+      <option value="gc">Grilled Cheese ($4.99)</option>
+    </select>
+    </p>
+
+    <p>Toppings:<br>
+        Cheese ($1.25)<input type="checkbox" id="chkCheese"><br>
+		Avocado ($1.50) <input type="checkbox" id="chkAvocado"><br>
+	</p>
+
+	Do you want chips on the side? <br>
+	Yes ($1.50)<input type="radio" name="radChips" id="yesChips"> <br>
+	No <input type="radio" name="radChips" id="noChips">
+	
+	
+    <p><input type="button" value="Make my Sandwich!" onclick="submitOrder()"></p>
+    </div><!-- end of ordering_form div -->
+
+    <div id="results">
+    </div>
+    
+    <div id="summary">
+    </div>
+<br>
+<div style="position: absolute; bottom: 0">
+<p><address>Page created by: Shivam Patel, March 3, 2019</address> 
+
+</body>
+
+</body>
+</html>
